@@ -1,0 +1,38 @@
+#begin  -- dont change this line
+# This is used for the github action that runs the tests
+# Dependencies can be installed with the command:
+# sudo apt-get install csh make gfortran-10 g++-10 cpp-10 libhdf5-dev \
+# libhdf5-openmpi-dev openmpi-bin libblas-dev liblapack-dev \
+# libgetopt-complete-perl ssh
+
+DIM            = 3
+DEBUG          = TRUE
+PRECISION      = DOUBLE
+OPT            = FALSE
+PROFILE        = FALSE
+CXX            = g++
+FC             = gfortran
+MPI            = FALSE
+OPENMPCC       = TRUE
+MPICC          = /usr/bin/mpicc
+MPICXX	       = /usr/bin/mpicxx
+USE_64         = TRUE
+USE_HDF        = TRUE
+# PAST-CONFIG:
+# HDFINCFLAGS       = -I/usr/include/hdf5/serial
+# HDFLIBFLAGS       = -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lz
+HDFINCFLAGS    = -I/y/local/hdf5-parallel-1.8.21/include
+HDFLIBFLAGS    = -L/y/local/hdf5-parallel-1.8.21/lib -lhdf5 -lz
+HDFMPIINCFLAGS = -I/y/local/hdf5-parallel-1.8.21/include
+HDFMPILIBFLAGS = -L/y/local/hdf5-parallel-1.8.21/lib -lhdf5 -lz
+# The following line puts all of the Chombo code in a Chombo namespace
+NAMESPACE      = TRUE
+USE_MT         = FALSE
+cxxoptflags    = -march=native -O3
+foptflags      = -march=native -O3
+# Comment out the following line if not using the AHFinder
+# cxxcppflags    = -I`pkg-config --variable=includedir petsc` -DUSE_AHFINDER
+# Comment out the bit in backticks if not using the AHFinder
+syslibflags    = -lblas -llapack
+
+#end  -- dont change this line
